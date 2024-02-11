@@ -40,10 +40,6 @@ function QuestionForm() {
     return setQuestions(editSelectedQuestion(e.currentTarget.value))
   }
 
-  // const getAlphabet = (value: number) => {
-  //   return (value + 9).toString(36).toUpperCase()
-  // };
-
   return (
     <main className={QuestionFormCSS.main}>
       <h2 className={QuestionFormCSS.sectionHeader}>Type</h2>
@@ -57,10 +53,9 @@ function QuestionForm() {
       <h2 className={QuestionFormCSS.sectionHeader}>Options</h2>
       <div className={QuestionFormCSS.optionsList}>
       {getOptions.map((option, i) => {
-        return <Option key={i} index={i+1} identifier={option.identifier} content={option.content}/>
+        return <Option key={i} index={i} content={option.content}/>
       })}
       </div>
-      {/* <Option index={getOptions.length+1} identifier={getAlphabet(getOptions.length + 1)} content=""/> */}
     </main>
   )
 }

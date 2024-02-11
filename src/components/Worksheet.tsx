@@ -1,5 +1,6 @@
 import WorksheetCSS from './Worksheet.module.css';
 import useStore from '../utilities/Store';
+import { numberToAlphabet } from "../utilities/Tools";
 
 function Worksheet() {
   const { title, questions } = useStore();
@@ -20,7 +21,7 @@ function Worksheet() {
                   if (i + 1 !== question.options!.length) {
                     return (
                       <div key={i} className={WorksheetCSS.eachOption}>
-                        <p>{option.identifier}</p>
+                        <p>{numberToAlphabet(i+1)}</p>
                         <p>{option.content}</p>
                       </div>
                     )

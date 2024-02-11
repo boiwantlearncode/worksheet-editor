@@ -19,6 +19,7 @@
   justify-content: flex-start;
   align-items: center;
   padding: 24px 48px;
+  overflow: hidden;
 }
 
 .title {

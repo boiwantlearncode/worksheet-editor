@@ -38,3 +38,27 @@
   margin-bottom: 30px;
   margin-left: 70px;
 }
+
+.addQuestionBtn {
+  background-color: #171717;
+  border: none;
+  width: 30vw;
+  padding: 10px 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  margin-top: 30px;
+}
+
+.addQuestionBtn:hover {
+  background-color: #191919;;
+  cursor: pointer;
+}
+
+.addQuestionBtn p {
+  color: #E4E4E4;
+  font-weight: 700;
+  font-size: 14px;
+}

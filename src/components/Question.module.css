@@ -46,11 +46,11 @@
 }
 
 .button:hover:not(.selected) {
-  border: 2px solid #2b3229;
+  border: 1px solid #2b3229;
 }
 
 .selected {
-  border: 2px solid #384335;
+  border: 1px solid #384335;
 }
 
 .deleteSVG:hover {

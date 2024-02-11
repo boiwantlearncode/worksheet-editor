@@ -1,6 +1,5 @@
 export interface OptionType {
   index: number;
-  identifier: string;
   content: string;
 }
 

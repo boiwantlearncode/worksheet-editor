@@ -1,10 +1,13 @@
-import useStore from "../utilities/Store";
-import { OptionType, QuestionType } from "../utilities/Types";
 import OptionCSS from "./Option.module.css";
 
+import useStore from "../utilities/Store";
+import { OptionType, QuestionType } from "../utilities/Types";
+import { numberToAlphabet } from "../utilities/Tools";
+
+import DeleteDefaultSVG from '../assets/delete-default.svg';
 
 function Option(props: OptionType) {
-  const { index, identifier, content } = props;
+  const { index, content } = props;
   const { selected, setSelected, questions, setQuestions } = useStore();
 
   const getSelectedQuestionInformation = () => {
@@ -23,17 +26,12 @@ function Option(props: OptionType) {
     return function(question: QuestionType) {
       if (question.id === selected) {
         if (question.options) {
-          for (var i = 0; i < question.options.length; i++) {
-            if (question.options[i].identifier === identifier) {
-              question.options[i].content = value;
-            }
-          }
+          question.options[index].content = value;
           if (addNewOption) {
             question.options.push({
-              "identifier": (question.options.length + 1 + 9).toString(36).toUpperCase(), 
               "content": "",
               "index": question.options.length + 1
-            }, )
+            })
           }
         }
       }
@@ -46,19 +44,39 @@ function Option(props: OptionType) {
   }
 
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (index !== getOptions.length) {
+    if (index + 1 !== getOptions.length) {
       setQuestions(editSelectedQuestion(e.currentTarget.value, false))
     } else {
       setQuestions(editSelectedQuestion(e.currentTarget.value, true))
     }
   }
 
+  const mapFunction = (question: QuestionType): QuestionType => {
+    const newQuestion: QuestionType = { ...question };
+
+    if (question.id === selected && newQuestion.options) {
+      newQuestion.options = newQuestion.options.filter((option, i) => i !== index);
+    }
+  
+    return newQuestion;
+    // return question.options!.filter((option: OptionType, i) => i !== index);
+  }
+
+  const deleteOption = () => {
+    setQuestions(questions.map(mapFunction));
+
+  }
+
   return (
     <div className={OptionCSS.option}>
-      <div className={`${index === getOptions.length ? OptionCSS.emptyIdentifier : OptionCSS.identifier}`}>
-        <p>{identifier}</p>
+      <div className={`${index + 1 === getOptions.length ? OptionCSS.emptyIdentifier : OptionCSS.identifier}`}>
+        <p>{numberToAlphabet(index + 1)}</p>
       </div>
-      <input onChange={handleTextChange} type="text" name="content" id="content" value={content} />
+      <input onChange={handleTextChange} className={`${index + 1 === getOptions.length ? OptionCSS.emptyInput : OptionCSS.input}`} type="text" name="content" id="content" value={content} />
+      {index + 1 !== getOptions.length ?
+      <img onClick={deleteOption} className={OptionCSS.deleteSVG} src={DeleteDefaultSVG} alt="Delete" /> :
+      <div className={OptionCSS.deleteButtonEmptyPlaceholder}></div>
+      }
     </div>
   )
 }

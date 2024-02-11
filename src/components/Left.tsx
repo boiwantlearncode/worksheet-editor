@@ -8,6 +8,7 @@ import { QuestionType } from '../utilities/Types';
 
 import { DndContext, DragEndEvent, closestCenter } from '@dnd-kit/core';
 import { arrayMove } from '@dnd-kit/sortable';
+import { getRandomID } from '../utilities/Tools';
 
 function Left() {
   const { title, setTitle, selected, questions, setQuestions } = useStore();
@@ -37,6 +38,22 @@ function Left() {
     setQuestions(reorderItems(questions, activeID, overID))
   }
 
+  const createNewQuestion = () => {
+    const newQuestion: QuestionType = {
+      "id": getRandomID(),
+      "index": (questions.length - 1).toString(),
+      "question": "",
+      "questionType": "MCQ",
+      "options": [
+        {
+          "content": "",
+          "index": 1
+        },
+      ]
+    };
+    setQuestions([...questions, newQuestion]);
+  }
+
   return (
     <main className={LeftCSS.main}>
       <input type="text" name="title" className={LeftCSS.title} value={title} onChange={handleTitleChange}/>
@@ -44,6 +61,9 @@ function Left() {
       <DndContext onDragEnd={handleDragEnd} collisionDetection={closestCenter}>
         <Column questions={questions}/>
       </DndContext>
+      <button onClick={createNewQuestion} className={LeftCSS.addQuestionBtn}>
+        <p>Add question</p>
+      </button>
       {selected &&
       <QuestionForm/>
       }
