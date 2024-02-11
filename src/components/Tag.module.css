@@ -1,0 +1,32 @@
+.tag {
+  background-color: #1F2922;
+  width: 60px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+}
+
+.tag p {
+  color: #6AE48E;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.selectedTag {
+  background-color: #19211B;
+  border: 1px solid #334A3A;
+  width: 60px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+}
+
+.selectedTag p {
+  color: #3EBB64;
+  font-size: 12px;
+  font-weight: 300;
+}

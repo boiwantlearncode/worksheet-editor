@@ -1,0 +1,40 @@
+.main {
+  background-color: #222222;
+  width: 40%;
+  height: auto;
+  border-right: 2px solid #1E1E1E;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+
+  padding: 45px 0;
+  overflow: auto;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #69CB69;
+  background-color: transparent;
+
+  padding: 5px;
+  border: 0;
+  border-radius: 6px;
+  outline: none;
+  text-align: center;
+}
+
+.title:hover {
+  background-color: #222d22;
+}
+
+.sectionHeader {
+  font-size: 20px;
+  font-weight: 500;
+  color: #B5B5B5;
+
+  align-self: flex-start;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  margin-left: 70px;
+}

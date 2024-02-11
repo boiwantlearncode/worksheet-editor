@@ -1,0 +1,9 @@
+.column {
+  /* background-color: red; */
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-between;
+  /* width: calc(32vw + 28px); */
+  width: calc(80% + 28px);
+}
